@@ -1,0 +1,90 @@
+Innocent Variants:
+	GOOD COMMONS
+	Medic:
+		Medkit: After 2 seconds of prep time, gives +50 health to everyone within X units of themselves (1-use item)
+		POS: A nice way to quickly heal wounded innocents after a confrontation with traitors
+		NEG: Difficult to use, as the Medic can easily heal traitors. Increases game length
+	Hunter (Previously the Survivalist):
+		Radar
+		Armor
+		Increased movement speed when HP < 50%
+		POS: Gives Innocents some situational awareness. Makes it easier to hunt down traitors
+	Tank:
+		50% more HP
+		Armor
+		POS: Gives Innocents more survivability. Makes Shotgun kills harder to pull off.
+		NEG: May force traitors to rely on things like the Baby Launcher and Jihad Bomb.
+	Scavenger (Previously the Survivalist):
+		Obtains 1 credit for every unique dead body they check.
+		Scavengers turn in credits to increase: max health, armor, speed, jump height, ammo count
+		POS: Gives traitors an urgency to hurry up and/or perform mass murder plots, as the Scavenger grows more powerful with time.
+		NEG: Bad implementation can lead to being able to easily determine who the Scavenger is.
+	
+	BAD COMMONS
+	Veteran:
+		If killing the Veteran would induce a karma loss, the killer will receive a massive penalty
+		Penalty: Deal 50% less damage (lasts for the remainder of the round)
+		NOTE: Bad idea to implement this by changing karma directly, as that sticks around for multiple round and can cause karma bans.
+		POS: Reduces RDM-ing
+		NEG: More of a downside for team innocents, as they tend to have more karma problems.
+	Troll:
+		Troll Bomb: Spawns three explosive fire barrels that's on fire
+		POS: Prevents people from clumping up in one place
+		NEG: More of a downside for team innocents, as they outnumber traitors
+	
+	GOOD RARES
+	Pheonix:
+		Pheonix Down: 10 seconds after death, revives with 25 health and improved movement speed (original body disappears)
+		POS: Gives Innocents a 2nd chance. Forces traitors to be more sneaky about who they kill
+		NEG: Pheonix can easily tattletale their killer
+	Gypsy:
+		Has Mirror Fate (Looks like Holstered. Stuck on Heart Attack in 30s)
+		Has Clairvoyance
+		POS: Gives Innocents a way to act out their grudges. Forces traitors to be more indirect. Reduces RDM-ing
+		NEG: Traitors have to proceed with even more caution.
+	Undercover Cop:
+		Appears as a traitor to traitors.
+		Detectives know which people are Double Agents
+		Has Handcuffs?
+		POS: Turns the game on its head by sowing distrust into traitors
+		NEG: Exact repercussions need to be determined through play-testing.
+
+Traitor Variants:
+	Count as traitors, so traitor testers go off on them, and they can use traitor traps
+	May have different win conditions
+	
+	Conspirator (rare):
+		Shares the same win condition with traitors
+		Appears to everyone as a detective
+		Traitors do not know who the Conspirator(s) are and vice versa
+		Has access to detective items, but does not have access to traitor items
+		CONSIDER: Conspiracy Theory: Always says that the victim is a traitor
+		CONSIDER: Conspirator Ball: Turns Innocents into Conspirators
+		Gains points for creating conspirators
+		POS: Turns the game on its head by sowing distrust into the one role that innocents can rely on
+		NEG: Much more hazardous than your typical traitor
+	
+	Jester:
+		Wins if killed directly by another non-jester
+		Looks like a traitor to other traitors
+		Weapons used by the Jester deal no damage (except for bombs/fire)
+		The Jester can't deal damage directly
+		The Jester can be killed by explosives, traitor weapons, and traitor traps without issue.
+		CONSIDER: Detectives should be able to kill/de-jesterify the Jester with special weaponry like the Detective Ball, Handcuffs, and the Golden Deagle
+		POS: Prevents the detective from RDM-ing
+		NEG: Tends to overstay their welcome when found out.
+	
+	Terrorist:
+		Has no win condition
+		Does not need to be killed or interacted with to end the game
+		Everyone knows who they are
+		CONSIDER: Give them fun speculation items like binoculars, "popcorn" and speed/jump boosts.
+		POS: Allows people to simmer down after many hectic games.
+		NEG: Will most likely overstay their welcome.
+
+More Jihad Bomb Jingles:
+	My Little Pony OP
+	Vay Hek "TICK TOCK" line
+	Daisy going "HAAAAM"
+	"It's a Pipe Bomb!" ~ Mysterious Ticking Noise
+	
