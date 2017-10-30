@@ -1,0 +1,151 @@
+gamemode
+	lang/
+		Basic descriptions and whatnot. Defined for many languages.
+	
+	cl_equip.lua
+		Code for equiping weapons via the "C" menu
+	cl_hud.lua
+		Displays HUD information on the bottom of the screen
+	cl_hudpickup.lua
+		Displays stuff that was picked up
+	cl_lang.lua
+		Displays strings in a fashion that's suitable for multiple languages.
+	cl_init.lua
+		ReceiveRole()
+			Receives role from server, displays it in a message, and sets the client's role
+	cl_popups.lua
+		GetTextForRole()
+			Not quite sure. gets some sort of info popup menu for every role (even those who don't use menus)
+			Probably pops up when looking over a dead body
+	cl_radar.lua
+		RADAR:Draw()
+			Sets radar color, among other things.
+			Traitor's radar shows more info... presumably.
+	cl_scoring.lua
+		CLSCore:BuildScorePanel:
+			Displays the score. Does show everyone's role.
+	cl_search.lua
+		Shows role information on searched bodies.
+		For Pheonix has a fake body to search.
+	cl_targetid.lua
+		Draws additional stuff.
+		Draws jester's icon for traitors.
+		Draws "search body" info for fake Pheonix body.
+	cl_voice.lua
+		RoleChatRecv()
+			Displays people's roles...
+	cl_wepswitch.lua
+		Shows weapons... in the color of your role.
+	
+	corpse.lua
+		IdentifyBody()
+			Determines role of the found body.
+		ShowSearch()
+			Broadcasts search results of found body.
+	
+	equip_items_shd.lua
+		Has base items that detective/traitor/survivalist can equip.
+		"loadout" field is set to true for items the roles start with (ex. armor for detective/survivalist)
+	
+	gamemsg.lua
+		Has Get<ROLE>Filter functions for every role.
+	
+	init.lua
+		CreateConVars
+			Sets up admin commands with default options.
+		jesterkilled variable is used here
+		Initialize()
+			"realmin_players" convar used here (Probably not needed).
+		WinChecker()
+			Hook added on player death. Used to set jesterkilled if Jester was killed by non-jester
+		PrepareRound()
+			"realmin_players" convar used here for role calculations
+			Sets jesterkilled to false
+		TellTraitorsAboutTraitors()
+			Tells traitors about any jesters that may exist
+		PrintResultMessage()
+			Prints out who won
+		EndRound()
+			"realmin_players" convar used here. No idea why when it's also used in PrepareRound()
+		TTTCheckForWin()
+			Determines who wins (Needs to be refactored to take subroles into account)
+		Get<ROLE>Count()
+			returns how many players of the given role there will be for the round
+		SelectRoles()
+			Determines which role everyone is (Needs to be refactored to take subroles into account)
+	
+	player.lua
+		"reskilled", "resname", and "resragname" variables created to keep track of the pheonix
+		PlayerSpawn()
+			removes "reskilled" if it's the pheonix that spawned.
+		KeyPress()
+			Does something with a stungun for the survivalist
+			Shows the fake ragdoll HUD if a player searches a pheonix's fake body.
+		PlayerDeath()
+			removes "reskilled" if it's the pheonix that was killed.
+		ScalePlayerDamage()
+			Scales damage done to and dealt by the jester to zero in certain cases.
+		EntityTakeDamage()
+			Prevents jester from taking explosion damage (don't need this)
+			Sets "reskilled" if the player is a pheonix, has less than 25 HP, and "reskilled" isn't already set.
+				There seems to be a bug here: If the pheonix has less than 25 HP, but the attack does less than their current health, they could erroneously revive.
+				There's a definite bug here: If the pheonix is revived via defib, they will only have one life.
+				Makes the Pheonix exit the vehicle if necessary.
+				Creates a fake Pheonix ragdoll
+				Sets Pheonix to spectator
+				Retrieve's the Pheonix's weapons
+				Waits for 30 seconds (Will want to shorten this to 10)
+				After that time span respawn the player with the weapons they had.
+					(This type of spawning does not appear to count as a PlayerSpawn())
+				Presumably the fake body is destroyed somewhere else.
+				Note: Code appears to immediately perform the above operations regardless of whether the last strike killed them.
+	
+	player_ext.lua
+		Sets the number of credits that the survivalist starts out with to be equal the # of credits that the detective starts out with.
+	
+	player_ext_shd.lua
+		Get<ROLE>()
+			true if the player is the given role
+		plymeta.Is<ROLE>
+			same as Get<ROLE>()
+		role_strings for each role
+		
+	scoring.lua
+		HandleSelection()
+			Adds the selection event. Also adds players to the (file-local) "table" variable by role.
+		ApplyEventLogScores()
+			Similar to HandleSelecetion() I guess.
+	
+	shared.lua
+		Sets the ROLE_<ROLE> enum
+		Adds the WIN_<CONDITION> enum
+		Sets what each role can use by default.
+		
+	traitor_state.lua
+		SendPlayerRoles()
+			sends the roles to all clients
+		SendRoleListMessage()
+			Sends some information related to a role.
+		Send<ROLE>List()
+			Calls SendRoleListMessage(<ROLE>)
+		SendFullStteUpdate()
+			Calls Send<ROLE>List() for all of the roles.
+		SendRoleReset()
+			Sends ROLE_INNOCENT to players
+		request_rolelist()
+			Calls Send<ROLE>List() for all roles
+		force_<ROLE>()
+			forces a player into the given role.
+		
+	weaponry.lua
+		GetLoadoutWeapons()
+			Gets starting equipment for each role
+	
+entities
+	entities
+		ttt_traitor_check.lua
+			Checks if a person is a traitor or not. 
+			Bugged for the town_of_terror mod, as the tester in ttt_waterworld lists survivalist as a traitor
+		ttt_win.lua
+			Related to win handling. Not touched by the town_of_terror mod
+	

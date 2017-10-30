@@ -51,12 +51,12 @@ Innocent Variants:
 
 Traitor Variants:
 	Count as traitors, so traitor testers go off on them, and they can use traitor traps
-	May have different win conditions
+	May have different win conditions (if so, they do not know who the traitors are)
 	
 	Conspirator (rare):
 		Shares the same win condition with traitors
 		Appears to everyone as a detective
-		Traitors do not know who the Conspirator(s) are and vice versa
+		Traitors do not know who the Conspirator(s) are
 		Has access to detective items, but does not have access to traitor items
 		CONSIDER: Conspiracy Theory: Always says that the victim is a traitor
 		CONSIDER: Conspirator Ball: Turns Innocents into Conspirators
@@ -65,7 +65,8 @@ Traitor Variants:
 		NEG: Much more hazardous than your typical traitor
 	
 	Jester:
-		Wins if killed directly by another non-jester
+		Wins if killed directly by another non-jester (through a standard gun or weapon)
+		If there are multiple jesters, then all must killed in this manner in order for team jester to win
 		Looks like a traitor to other traitors
 		Weapons used by the Jester deal no damage (except for bombs/fire)
 		The Jester can't deal damage directly
