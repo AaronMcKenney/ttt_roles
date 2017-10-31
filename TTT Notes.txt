@@ -88,13 +88,14 @@ gamemode
 		EntityTakeDamage()
 			Prevents jester from taking explosion damage (don't need this)
 			Sets "reskilled" if the player is a pheonix, has less than 25 HP, and "reskilled" isn't already set.
-				There seems to be a bug here: If the pheonix has less than 25 HP, but the attack does less than their current health, they could erroneously revive.
+				There seems to be a bug here (verification required): If the pheonix has less than 25 HP, but the attack does less than their current health, they could erroneously revive.
+					TODO: Verify this either with a Huge (carefully this time) or by hacking the HP limit from 25 to 100 and then using a crowbar.
 				There's a definite bug here: If the pheonix is revived via defib, they will only have one life.
 				Makes the Pheonix exit the vehicle if necessary.
 				Creates a fake Pheonix ragdoll
 				Sets Pheonix to spectator
 				Retrieve's the Pheonix's weapons
-				Waits for 30 seconds (Will want to shorten this to 10)
+				Waits for 30 seconds (Will want to shorten this to 15)
 				After that time span respawn the player with the weapons they had.
 					(This type of spawning does not appear to count as a PlayerSpawn())
 				Presumably the fake body is destroyed somewhere else.
@@ -104,11 +105,15 @@ gamemode
 		Sets the number of credits that the survivalist starts out with to be equal the # of credits that the detective starts out with.
 	
 	player_ext_shd.lua
+		role_strings for each role
 		Get<ROLE>()
 			true if the player is the given role
 		plymeta.Is<ROLE>
 			same as Get<ROLE>()
-		role_strings for each role
+		IsActiveRole(role)
+			Returns true if the player is in an active game as the given role.
+		IsSpecial()
+			Returns true if the player is not an innocent.
 		
 	scoring.lua
 		HandleSelection()
@@ -144,8 +149,8 @@ gamemode
 entities
 	entities
 		ttt_traitor_check.lua
-			Checks if a person is a traitor or not. 
-			Bugged for the town_of_terror mod, as the tester in ttt_waterworld lists survivalist as a traitor
+			Checks if a person is a traitor or not (Primarily through IsActiveTraitor())
+			Bugged for the town_of_terror mod, as the tester in ttt_waterworld lists survivalist/pheonix as a traitor
 		ttt_win.lua
 			Related to win handling. Not touched by the town_of_terror mod
 	
